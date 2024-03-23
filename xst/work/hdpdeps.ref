@@ -1,0 +1,8 @@
+V3 3
+FL /home/asterinos/neighbour-s-cpu-v2/memory_controller.vhd 2024/03/23.16:16:28 P.20131013
+EN work/memory_controller 1711205799 \
+      FL /home/asterinos/neighbour-s-cpu-v2/memory_controller.vhd \
+      PB ieee/std_logic_1164 1381692176
+AR work/memory_controller/Behavioral 1711205800 \
+      FL /home/asterinos/neighbour-s-cpu-v2/memory_controller.vhd \
+      EN work/memory_controller 1711205799

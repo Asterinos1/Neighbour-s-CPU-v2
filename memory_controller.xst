@@ -1,0 +1,5 @@
+set -tmpdir "/home/asterinos/neighbour-s-cpu-v2/xst/projnav.tmp"
+set -xsthdpdir "/home/asterinos/neighbour-s-cpu-v2/xst"
+elaborate
+-ifn memory_controller.prj
+-ifmt mixed
