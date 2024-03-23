@@ -1,0 +1,7 @@
+_xmsgs/*
+iseconfig/*
+*.log
+*.txt
+*.gise
+*.xise
+.lso
