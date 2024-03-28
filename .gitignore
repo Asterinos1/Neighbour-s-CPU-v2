@@ -1,5 +1,6 @@
 **/_xmsgs/*
 **/iseconfig/*
+**/ipcore_dir/*
 **/xst/*
 **/*.log
 **/*.txt
