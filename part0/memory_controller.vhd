@@ -30,7 +30,7 @@ entity memory_controller is
            Wf : in  STD_LOGIC;								-- Write input flag
            Rf: in  STD_LOGIC;									-- Read input flag
 			  AddrOUT: out STD_LOGIC_VECTOR (4 downto 0);	-- Address to send to RAM to read/write
-			  WEf: out STD_LOGIC_VECTOR(0 downto 0)			-- Flag to enable write to RAM
+			  WEf: out STD_LOGIC			-- Flag to enable write to RAM
 			  );								
 end memory_controller;
 
@@ -41,47 +41,50 @@ architecture Behavioral of memory_controller is
 	signal state: state_type;
 
 begin
-	sync_proc: process (CLK)
-	begin
-		if(CLK'event and CLK = '1') then
-			if (RST = '1') then
-            state <= IDLE_STATE;
+	--sync_proc: process (CLK)
+	--begin
+		--if(CLK'event and CLK = '1') then
+			--if (RST = '1') then
+           -- state <= IDLE_STATE;
 				-- Point to the address 0x0 when reseting
-             AddrOUT <= "00000";
+             --AddrOUT <= "00000";
          --else
            -- state <= next_state;
            -- <output> <= <output>_i;
          -- assign other outputs to internal signals
-         end if;        
-      end if;
-   end process;
+         --end if;        
+      --end if;
+   --end process;
 	
 	--MEALY State-Machine - Outputs based on state and inputs
 	--others inputs to be added here.
    OUTPUT_DECODE: process (state, Wf, Rf, AddrW, AddrR )
    begin
+	--if(CLK'event and CLK = '1') then
       if (Rf = '1' and Wf = '0') then
 		-- Read state
-			WEf <= "0";
+			WEf <= '0';
          AddrOUT <= AddrR;
 			--state <= READ_STATE;
       elsif (Rf = '0' and Wf = '1') then
 		-- Write state
-			WEf <= "1";
+			WEf <= '1';
 			AddrOUT <= AddrW;
 			--state <= WRITE_STATE;
       elsif (Rf = '1' and Wf = '1') then
 		-- Read and Write state
-			WEf <= "0";
+			WEf <= '0';
 			AddrOUT <= AddrR;
-			WEf <= "1";
+			WEf <= '1';
 			AddrOUT <= AddrW;
 			--state <= READ_WRITE_STATE;
 		else
 		-- Idle state
-			WEf <= "0";
+			WEf <= '0';
+			--AddrOUT <= "00000";
 			--state <= IDLE_STATE;
       end if;
+	--end if;
    end process;
 	
 end Behavioral;

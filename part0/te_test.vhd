@@ -2,10 +2,10 @@
 -- Company: 
 -- Engineer:
 --
--- Create Date:   17:45:47 03/24/2024
+-- Create Date:   19:34:26 03/28/2024
 -- Design Name:   
--- Module Name:   /home/polychronis/Projects/neighbour-s-cpu-v2/part0/te_test.vhd
--- Project Name:  Project0
+-- Module Name:   /home/polychronis/Projects/part0/neighbour.vhd
+-- Project Name:  part0
 -- Target Device:  
 -- Tool versions:  
 -- Description:   
@@ -32,10 +32,10 @@ USE ieee.std_logic_1164.ALL;
 -- arithmetic functions with Signed or Unsigned values
 --USE ieee.numeric_std.ALL;
  
-ENTITY te_test IS
-END te_test;
+ENTITY neighbour IS
+END neighbour;
  
-ARCHITECTURE behavior OF te_test IS 
+ARCHITECTURE behavior OF neighbour IS 
  
     -- Component Declaration for the Unit Under Test (UUT)
  
@@ -100,20 +100,22 @@ BEGIN
    begin		
       -- hold reset state for 100 ns.
       --wait for 100 ns;	
-		ReadF <= '1';
-		WriteF <= '0';
-		AddrRead <= b"00011";
-				
-      wait for CLK_period;
+		   -- hold reset state for 100 ns.
+		RST <= '1';
+		wait for CLK_period*20;
+		RST <= '0';
+		
 		ReadF <= '0';
 		WriteF <= '1';
-		NumberIN <= "1011011010110011";
-		AddrWrite <= "00011";
-		wait for CLK_period;
+		AddrWrite <= "00010";
+		NumberIN <= "0100101000100101";
+      wait for CLK_period*20;
 		
 		ReadF <= '1';
 		WriteF <= '0';
-		AddrRead <= b"00011";
+		AddrRead <= "00010";
+
+	wait for CLK_period*20;
 
       -- insert stimulus here 
 

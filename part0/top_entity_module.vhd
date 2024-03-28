@@ -46,38 +46,44 @@ architecture Behavioral of top_entity_module is
 	component memory_controller is
 		Port( CLK,RST,Wf,Rf: in std_logic;
 				AddrW, AddrR: in std_logic_vector(4 downto 0);
-				WEf: out std_logic_vector(0 downto 0);
+				WEf: out std_logic;
 				AddrOUT: out std_logic_vector(4 downto 0)
 				);
 	end component;
 	
-	component memory is 
-		Port ( rsta, clka : in std_logic;
-					wea: in std_logic_vector(0 downto 0); -- In MEM vhd this flag is set as vector of 1 bit for smrsn idk
-					addra: in std_logic_vector(4 downto 0);
-					dina: in std_logic_vector(15 downto 0);
-					douta : out std_logic_vector(15 downto 0)
-				);
-	end component;
+	COMPONENT memory
+  PORT (
+    a : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
+    d : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+    clk : IN STD_LOGIC;
+    we : IN STD_LOGIC;
+    qspo_rst : IN STD_LOGIC;
+    qspo : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
+  );
+END COMPONENT;
 	
-	signal we_s : std_logic_vector(0 downto 0);
+	signal we_s : std_logic;
 	signal addr_s : std_logic_vector (4 downto 0);
 	
 begin
+
+	u2: memory Port Map (clk => CLK,
+						qspo_rst => RST,
+						qspo => NumberOUT,
+						d => NumberIN,
+						we => we_s,
+						a => addr_s);
+
 
 	u1: memory_controller Port Map(CLK => CLK,
 						RST => RST,
 						AddrW => AddrWrite,
 						AddrR => AddrRead,
 						Wf => WriteF,
-						Rf => ReadF);
+						Rf => ReadF,
+						AddrOUT => addr_s,
+						WEf => we_s);
 						
-	u2: memory Port Map (clka => CLK,
-						rsta => RST,
-						douta => NumberOUT,
-						dina => NumberIN,
-						wea => we_s,
-						addra => addr_s);
 						
 	Valid <= ReadF;
 
