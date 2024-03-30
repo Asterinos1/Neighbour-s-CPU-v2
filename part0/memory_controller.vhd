@@ -44,42 +44,6 @@ architecture Behavioral of memory_controller is
 
 begin
 	
---	--MEALY State-Machine - Outputs based on state and inputs
---	--others inputs to be added here.
---   OUTPUT_DECODE: process(Wf, Rf, AddrW, AddrR )
---   begin
---	--wait for CLK'event and CLK = '1';
---	if (Rf = '1' and Wf = '0') then
---		-- Read state
---			WEf <= '0';
---         AddrOUT <= AddrR;
---			val <= '1';
---			--state <= READ_STATE;
---      elsif (Rf = '0' and Wf = '1') then
---		-- Write state
---			WEf <= '1';
---			AddrOUT <= AddrW;
---			val <= '0';
---			--state <= WRITE_STATE;
---      elsif (Rf = '1' and Wf = '1') then
---		-- Read and Write state
---			WEf <= '0';
---			AddrOUT <= AddrR;
---			val <= '1';
---					
---			AddrOUT <= AddrW;
---			WEf <= '1';
---			val <= '0';
---		else
---		-- Idle state
---			WEf <= '0';
---			val <= '0';
---			--AddrOUT <= "00000";
---			--state <= IDLE_STATE;
---      end if;
---	--end if;
---   end process;
-
 	rw_f <= (Rf, Wf);
 
 	STATE_EN: process(rw_f, CLK)
