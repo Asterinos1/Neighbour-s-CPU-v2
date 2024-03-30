@@ -41,6 +41,8 @@ architecture Behavioral of memory_controller is
 	type state_type is (IDLE_STATE, WRITE_STATE, READ_STATE, READ_WRITE_STATE);
 	signal state: state_type;
 	signal rw_f: std_logic_vector(1 downto 0);
+	signal rnw: std_logic;
+
 
 begin
 	
@@ -64,23 +66,33 @@ begin
 	
 	OUTPUT: process(state, AddrR)
 	begin
+
 		case state is
 			when READ_STATE =>
 				AddrOUT <= AddrR;
 				WEf <= '0';
 				val <= '1';
+				rnw <= '0';
 			when WRITE_STATE =>
 				AddrOUT <= AddrW;
 				val <= '0';
-				WEf <= '1';				
+				WEf <= '1';		
+				rnw <= '0';
 			when READ_WRITE_STATE =>
 				AddrOUT <= AddrR;
 				WEf <= '0';
 				val <= '1';
+				rnw <= '1';
 			when others =>
 				WEf <= '0';
 				val <= '0';
 		end case;
+		
+		if (rnw = '1') then 
+			AddrOUT <= AddrW;
+			val <= '0';
+			WEf <= '1';
+		end if;
 	end process;
 	
 	

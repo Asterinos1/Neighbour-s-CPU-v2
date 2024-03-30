@@ -58,8 +58,7 @@ COMPONENT memory
     d : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
     clk : IN STD_LOGIC;
     we : IN STD_LOGIC;
-    qspo_rst : IN STD_LOGIC;
-    qspo : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
+    spo : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
   );
 END COMPONENT;
 	
@@ -69,8 +68,8 @@ END COMPONENT;
 begin
 
 	u2: memory Port Map (clk => CLK,
-						qspo_rst => RST,
-						qspo => NumberOUT,
+						--qspo_rst => RST,
+						spo => NumberOUT,
 						d => NumberIN,
 						we => we_s,
 						a => addr_s);
