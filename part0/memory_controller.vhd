@@ -48,7 +48,7 @@ begin
 	
 	rw_f <= (Rf, Wf);
 
-	STATE_EN: process(rw_f, CLK)
+	STATE_EN: process(rw_f, CLK, RST)
 	begin
 	if RST = '1' then
 		state <= IDLE_STATE;
