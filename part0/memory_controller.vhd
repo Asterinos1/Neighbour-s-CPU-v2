@@ -25,12 +25,13 @@ use IEEE.NUMERIC_STD.ALL;
 entity memory_controller is
     Port ( CLK : in  STD_LOGIC;
            RST : in  STD_LOGIC;
-           AddrW : in  STD_LOGIC_VECTOR (4 downto 0);	-- Address to write in memory
-           AddrR : in  STD_LOGIC_VECTOR (4 downto 0);	-- Address to read from memory
-           Wf : in  STD_LOGIC;								-- Write input flag
+				AddrR: in STD_LOGIC_VECTOR(4 downto 0);
+				AddrW: in STD_LOGIC_VECTOR(4 downto 0);
+				Wf : in  STD_LOGIC;								-- Write input flag
            Rf: in  STD_LOGIC;									-- Read input flag
-			  AddrOUT: out STD_LOGIC_VECTOR (4 downto 0);	-- Address to send to RAM to read/write
-			  WEf: out STD_LOGIC			-- Flag to enable write to RAM
+			  WEf: out STD_LOGIC;			-- Flag to enable write to RAM
+			  val: out STD_LOGIC;
+			  AddrOUT: out STD_LOGIC_VECTOR(4 downto 0)
 			  );								
 end memory_controller;
 
@@ -39,52 +40,61 @@ architecture Behavioral of memory_controller is
 	--Declaring states of the FSM.
 	type state_type is (IDLE_STATE, WRITE_STATE, READ_STATE, READ_WRITE_STATE);
 	signal state: state_type;
+	signal rw_f: std_logic_vector(1 downto 0);
+	signal rnw: std_logic;
+
 
 begin
-	--sync_proc: process (CLK)
-	--begin
-		--if(CLK'event and CLK = '1') then
-			--if (RST = '1') then
-           -- state <= IDLE_STATE;
-				-- Point to the address 0x0 when reseting
-             --AddrOUT <= "00000";
-         --else
-           -- state <= next_state;
-           -- <output> <= <output>_i;
-         -- assign other outputs to internal signals
-         --end if;        
-      --end if;
-   --end process;
 	
-	--MEALY State-Machine - Outputs based on state and inputs
-	--others inputs to be added here.
-   OUTPUT_DECODE: process (state, Wf, Rf, AddrW, AddrR )
-   begin
-	--if(CLK'event and CLK = '1') then
-      if (Rf = '1' and Wf = '0') then
-		-- Read state
-			WEf <= '0';
-         AddrOUT <= AddrR;
-			--state <= READ_STATE;
-      elsif (Rf = '0' and Wf = '1') then
-		-- Write state
-			WEf <= '1';
+	rw_f <= (Rf, Wf);
+
+	STATE_EN: process(rw_f, CLK)
+	begin
+	if rising_edge(CLK) then
+		case rw_f is
+			when "10" =>
+				state <= READ_STATE;
+			when "01" =>
+				state <= WRITE_STATE;
+			when "11" =>
+				state <= READ_WRITE_STATE;
+			when others =>
+				state <= IDLE_STATE;
+		end case;
+	end if;
+	end process;
+	
+	OUTPUT: process(state, AddrR)
+	begin
+
+		case state is
+			when READ_STATE =>
+				AddrOUT <= AddrR;
+				WEf <= '0';
+				val <= '1';
+				rnw <= '0';
+			when WRITE_STATE =>
+				AddrOUT <= AddrW;
+				val <= '0';
+				WEf <= '1';		
+				rnw <= '0';
+			when READ_WRITE_STATE =>
+				AddrOUT <= AddrR;
+				WEf <= '0';
+				val <= '1';
+				rnw <= '1';
+			when others =>
+				WEf <= '0';
+				val <= '0';
+		end case;
+		
+		if (rnw = '1') then 
 			AddrOUT <= AddrW;
-			--state <= WRITE_STATE;
-      elsif (Rf = '1' and Wf = '1') then
-		-- Read and Write state
-			WEf <= '0';
-			AddrOUT <= AddrR;
+			val <= '0';
 			WEf <= '1';
-			AddrOUT <= AddrW;
-			--state <= READ_WRITE_STATE;
-		else
-		-- Idle state
-			WEf <= '0';
-			--AddrOUT <= "00000";
-			--state <= IDLE_STATE;
-      end if;
-	--end if;
-   end process;
+		end if;
+	end process;
+	
+	
 	
 end Behavioral;
