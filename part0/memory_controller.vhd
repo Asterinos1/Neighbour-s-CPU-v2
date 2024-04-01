@@ -50,17 +50,21 @@ begin
 
 	STATE_EN: process(rw_f, CLK)
 	begin
-	if rising_edge(CLK) then
-		case rw_f is
-			when "10" =>
-				state <= READ_STATE;
-			when "01" =>
-				state <= WRITE_STATE;
-			when "11" =>
-				state <= READ_WRITE_STATE;
-			when others =>
-				state <= IDLE_STATE;
-		end case;
+	if RST = '1' then
+		state <= IDLE_STATE;
+	else 
+		if rising_edge(CLK) then
+			case rw_f is
+				when "10" =>
+					state <= READ_STATE;
+				when "01" =>
+					state <= WRITE_STATE;
+				when "11" =>
+					state <= READ_WRITE_STATE;
+				when others =>
+					state <= IDLE_STATE;
+			end case;
+		end if;
 	end if;
 	end process;
 	
