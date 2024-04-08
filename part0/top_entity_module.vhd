@@ -52,27 +52,40 @@ architecture Behavioral of top_entity_module is
 	end component;
 	
 
+--COMPONENT memory
+--  PORT (
+--    a : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
+--    d : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+--    clk : IN STD_LOGIC;
+--    we : IN STD_LOGIC;
+--    spo : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
+--  );
+--END COMPONENT;
+
 COMPONENT memory
   PORT (
     a : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
     d : IN STD_LOGIC_VECTOR(15 DOWNTO 0);
+    dpra : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
     clk : IN STD_LOGIC;
     we : IN STD_LOGIC;
-    spo : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
+    spo : OUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+    dpo : OUT STD_LOGIC_VECTOR(15 DOWNTO 0)
   );
 END COMPONENT;
 	
 	signal we_s : std_logic;
-	signal addr_s : std_logic_vector (4 downto 0);
-	
+	signal addr_w : std_logic_vector (4 downto 0);
+	signal addr_r: std_logic_vector (4 downto 0);
+		
 begin
 
-	u2: memory Port Map (clk => CLK,
-						--qspo_rst => RST,
-						spo => NumberOUT,
-						d => NumberIN,
-						we => we_s,
-						a => addr_s);
+--	u2: memory Port Map (clk => CLK,
+--						--qspo_rst => RST,
+--						spo => NumberOUT,
+--						d => NumberIN,
+--						we => we_s,
+--						a => addr_s);
 
 
 	u1: memory_controller Port Map(CLK => CLK,
@@ -84,7 +97,16 @@ begin
 						AddrOUT => addr_s,
 						WEf => we_s,
 						val => Valid);
-						
+	
+		u2: memory PORT MAP (
+    a => addr_w,
+    d => ,
+    dpra => dpra,
+    clk => CLK,
+    we => we,
+    spo => spo,
+    dpo => dpo
+  );
 
 	
 
