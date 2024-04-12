@@ -51,8 +51,8 @@ begin
 	--We add an extra 0 bit in the front 
 	--to avoid problems when doing addition/subtraction.
 	
-	temp <=(('0' & A) + ('0' & B)) when Op = "0000" else
-			(('0' & A) - ('0' & B)) when Op = "0001";
+	temp <=((A(31) & A) + (B(31) & B)) when Op = "0000" else
+			((B(31) & A) - (B(31) & B)) when Op = "0001";
 
 	--Ovf when 1) sign of sum different from the A,B sign.
 	--         2) sign of A and B are different but reuslt has the sign of B.
