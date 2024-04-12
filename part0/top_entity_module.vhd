@@ -46,7 +46,11 @@ architecture Behavioral of top_entity_module is
 	component memory_controller is
 		Port( CLK,RST,Wf,Rf: in std_logic;
 				AddrW, AddrR: in std_logic_vector(4 downto 0);
+<<<<<<< HEAD
 				WEf, val: out std_logic;
+=======
+				WEf,Valid: out std_logic;
+>>>>>>> main
 				AddrOUT: out std_logic_vector(4 downto 0)
 				);
 	end component;
@@ -96,6 +100,7 @@ begin
 						Rf => ReadF,
 						AddrOUT => addr_s,
 						WEf => we_s,
+<<<<<<< HEAD
 						val => Valid);
 	
 		u2: memory PORT MAP (
@@ -108,6 +113,10 @@ begin
     dpo => dpo
   );
 
+=======
+						Valid => Valid);
+						
+>>>>>>> main
 	
 
 end Behavioral;

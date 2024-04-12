@@ -37,7 +37,7 @@ entity memory_controller is
 			  AddrOUT: out STD_LOGIC_VECTOR (4 downto 0);	-- Address to send to RAM to read/write
 			  WEf: out STD_LOGIC;			-- Flag to enable write to RAM
 			  Valid: out STD_LOGIC	  
->>>>>>> main
+>>>>>>> 3cf597a (States)
 			  );								
 end memory_controller;
 
@@ -174,6 +174,6 @@ begin
 		end if;
 	end if;
    end process;
->>>>>>> main
+>>>>>>> 3cf597a (States)
 	
 end Behavioral;
