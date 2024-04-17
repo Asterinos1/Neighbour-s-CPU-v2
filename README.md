@@ -16,4 +16,4 @@ by Poler and Asterinos**
 
 ### Part 1
 
-**The official CPU for neighbour's pc with 1 kb ram
+**The official CPU for neighbour's pc with 1 kb ram**
