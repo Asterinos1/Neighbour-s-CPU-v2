@@ -12,3 +12,8 @@ by Poler and Asterinos**
 #### Features
 - A semi-functional FSM
 - Slow as hell
+
+
+### Part 1
+
+**The official CPU for neighbour's pc with 1 kb ram
