@@ -1,25 +1,29 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
--- Getting package 'matrices' from the work library.
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+--Getting package matrices we created from the work library.
 use work.matrices.all;
 
-entity mux_out is
-    Port ( in1 : in  STD_LOGIC_VECTOR (31 downto 0);
-           in2 : in  STD_LOGIC_VECTOR (31 downto 0);
-           sel : in  STD_LOGIC;
-           output : out  STD_LOGIC_VECTOR (31 downto 0));
-end mux_out;
+entity s_mux is
+    
+    Port ( 
+        input_1 : in  STD_LOGIC_VECTOR (31 downto 0);
+        input_2 : in  STD_LOGIC_VECTOR (31 downto 0);
+        sel_2: in  std_logic;
+        output_2 : out  STD_LOGIC_VECTOR (31 downto 0)
+    );
+end s_mux;
 
-architecture Behavioral of mux_out is
-
+architecture Behavioral of s_mux is
 begin
-	process(in1, in2, sel)
-	begin
-		if sel = '0' then
-			output <= in1;
-		else
-			output <= in2;
-		end if;
-	end process;
+    process(input_1,input_2,sel_2)	
+
+    begin	
+        if sel_2 = '0' then
+            output_2 <= input_1;
+        else
+            output_2 <= input_2;
+        end if;
+    end process;
 end Behavioral;
 
