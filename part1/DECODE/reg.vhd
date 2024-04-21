@@ -1,17 +1,3 @@
-----------------------------------------------------------------------------------
--- Module Name:    register - Behavioral 
--- Project Name: 
--- Target Devices: 
--- Tool versions: 
--- Description: 
---
--- Dependencies: 
---
--- Revision: 
--- Revision 0.01 - File Created
--- Additional Comments: 
---
-----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
@@ -30,14 +16,11 @@ architecture Behavioral of reg is
 
 begin
 
--- Design taken from lab material "flip-flop with Q" and adapted 
--- Synchronous RST Register with Enable signal
-
 	process (CLK,WE,RST,Datain)
 	begin
 		if rising_edge(CLK) then
-			if 	RST='1' 	then	temp <= (others => '0');	-- reset is "active high"
-			elsif WE='1' 	then	temp <= Datain;				-- elsif because WE and RST should not be on at the same time
+			if 	RST='1' 	then	temp <= (others => '0');	
+			elsif WE='1' 	then	temp <= Datain;				
 			else temp <= temp;
 			end if;
 		end if;    
