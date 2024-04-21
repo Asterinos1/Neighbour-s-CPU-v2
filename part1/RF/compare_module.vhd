@@ -10,12 +10,12 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity compare is
+entity compare_module is
     Port ( ard_in : in  STD_LOGIC_VECTOR (4 downto 0);
            awr_in : in  STD_LOGIC_VECTOR (4 downto 0);
            WE : in  STD_LOGIC;
            cmp_out : out  STD_LOGIC);
-end compare;
+end compare_module;
 
 architecture Behavioral of compare is
 
