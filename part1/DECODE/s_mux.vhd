@@ -1,17 +1,3 @@
-----------------------------------------------------------------------------------
--- Module Name:    s_mux - Behavioral 
--- Project Name: 
--- Target Devices: 
--- Tool versions: 
--- Description: 
---
--- Dependencies: 
---
--- Revision: 
--- Revision 0.01 - File Created
--- Additional Comments: 
---
-----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
@@ -19,7 +5,6 @@ use work.matrices.all;
 
 
 entity s_mux is
-    Generic (n: integer := 1); -- selector size
     Port ( 
         input_1 : in  STD_LOGIC_VECTOR (31 downto 0);
         input_2 : in  STD_LOGIC_VECTOR (31 downto 0);
