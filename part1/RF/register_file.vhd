@@ -148,6 +148,7 @@ begin
 					Datain => (others => '0'),	-- R0 is set to 0 (permanently)
 					RST => RST,						-- RST goes straight to the registers
 					Dataout => mux_input(i)    -- register output go to mux input (the MATRIX we created)
+				);
 		end generate R_Zero;
 		
 		other_regs: if i>0 generate
