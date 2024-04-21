@@ -28,3 +28,4 @@ begin
 	
 		Dataout <= temp;
 end Behavioral;
+

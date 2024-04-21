@@ -14,9 +14,10 @@ begin
 	decode: process(decIn)
 	begin
 	
-		decOut <= decOut"00000000";  --First reset the decoder's output
+		decOut <= X"00000000";  --First reset the decoder's output
 		decOut(conv_integer(decIn)) <= '1';
 		
 	end process;
 
 end Behavioral;
+

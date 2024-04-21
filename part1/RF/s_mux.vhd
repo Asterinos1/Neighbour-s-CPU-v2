@@ -1,7 +1,6 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
---Getting package matrices we created from the work library.
 use work.matrices.all;
 
 entity s_mux is
@@ -26,4 +25,3 @@ begin
         end if;
     end process;
 end Behavioral;
-

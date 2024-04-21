@@ -1,41 +1,35 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx primitives in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
-
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+	
 entity compare_module is
-    Port ( ard_in : in  STD_LOGIC_VECTOR (4 downto 0);
-           awr_in : in  STD_LOGIC_VECTOR (4 downto 0);
-           WE : in  STD_LOGIC;
-           cmp_out : out  STD_LOGIC);
+	Port ( 
+		inp : in STD_LOGIC_VECTOR (4 downto 0);
+	   inp2 : in  STD_LOGIC_VECTOR (4 downto 0);
+		we : in std_logic;
+		outp: out std_logic
+	);
 end compare_module;
 
-architecture Behavioral of compare is
+architecture Behavioral of compare_module is
 
-	signal temp: std_logic; -- temp signal to hanlde the output
+	signal temp: std_logic; 
 
 begin
-	process(ard_in, awr_in, WE)
+	process(inp,inp2,we)	
 	begin
-		if(WE='1') then
-			if(ard_in = awr_in) then
-				temp<='1'; -- Set output to '1' if inputs are equal
+		if(we='1') then	
+			if (inp = inp2)  then
+				temp<= '1';
 			else
-				temp<='0'; -- Set output to '0' if inputs are not equal
+				temp<= '0';
 			end if;
 		else
-			temp<='0'; -- Set output to '0' if comparison is disabled
+			temp <= '0';
 		end if;	
+		
 	end process;
-	
-	cmp_out<=temp; --finally assing temp to output
-	
+		 
+	outp <= temp;
+			
 end Behavioral;
-
