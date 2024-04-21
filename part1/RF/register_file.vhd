@@ -1,17 +1,3 @@
----------------------------------------------------------------------------------- 
--- Module Name:    register_file - Behavioral 
--- Project Name: 
--- Target Devices: 
--- Tool versions: 
--- Description: 
---
--- Dependencies: 
---
--- Revision: 
--- Revision 0.01 - File Created
--- Additional Comments: 
---
-----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use work.matrices.all;
@@ -42,23 +28,18 @@ architecture Behavioral of register_file is
     END COMPONENT;
     
 
-   -- Decoder Input (A) is Awr
-
  	-- Decoder Output (X) will be "redirected" to dec_out
    signal dec_out: std_logic_vector(31 downto 0);
 	
 	-- Multiplexer declaration
-	COMPONENT generic_mux
+   COMPONENT generic_mux
 	PORT (
          input : IN  MATRIX(0 to 31);
          sel : IN  integer range 0 to 31;
          output : OUT  std_logic_vector(31 downto 0)
         );
     END COMPONENT;
-    
-
 	-- The inputs of the 2 multiplexers' are the same, and are the register outputs.
-	 
 	signal mux_input : MATRIX(0 to 31) := (others => (others => '0'));
 
 	
@@ -75,12 +56,7 @@ architecture Behavioral of register_file is
         );
 	END COMPONENT;
 
-
-	-- The register's WE signals are equal to the RF's WrEn signal AND the decoder's
-	-- output corresponding to each register.
-	
-	-- This is an intermediate register WE signal, whose values refresh with
-	-- each clock cycle.
+	-- This is an intermediate register WE signal, whose values refresh with each clock cycle.
 	signal intermediate_WE_array: STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
 	
 	
@@ -111,15 +87,11 @@ architecture Behavioral of register_file is
 	signal comp_mod_out2: std_logic;
 	
 begin
-
-
-	-- instantiate the decoder
 	dec:	decoder PORT MAP (
 				A => Awr,
 				X => dec_out -- after statement could go here
 			);
 
-	-- instantiate the multiplexers		
 	mux1: generic_mux PORT MAP (
 				input => mux_input,
 				sel => conv_integer(Ard1),
@@ -161,28 +133,25 @@ begin
 			);	
 			
 	
-	
-
-	-- instantiate the registers
 	create_registers: for i in 0 to 31 generate
 		
 		R_Zero: if i=0 generate
 			R0: reg PORT MAP(
-					CLK => Clock,					-- Clock goes straight to the registers
-					WE => '0',						-- R0 cannot be overwritten
+					CLK => Clock,			-- Clock goes straight to the registers
+					WE => '0',			-- R0 cannot be overwritten
 					Datain => (others => '0'),	-- R0 is hard wired to 0
-					RST => RST,						-- RST goes straight to the registers (and resets them all, high triggered)
+					RST => RST,			-- RST goes straight to the registers (and resets them all, high triggered)
 					Dataout => mux_input(i)
 				);
 		end generate R_Zero;
 		
 		other_regs: if i>0 generate
 			regx: reg PORT MAP(
-					CLK => Clock,							-- Clock goes straight to the registers 
+					CLK => Clock,			-- Clock goes straight to the registers 
 					WE => intermediate_WE_array(i),	
-					Datain => Din,							-- Din goes straight to the registers
-					RST => RST,								-- RST goes straight to the registers (and resets them all, high triggered)
-					Dataout => mux_input(i)				-- register outs go to mux input
+					Datain => Din,			-- Din goes straight to the registers
+					RST => RST,			-- RST goes straight to the registers (and resets them all, high triggered)
+					Dataout => mux_input(i)		-- register outs go to mux input
 				);
 		end generate other_regs;
 	end generate create_registers;
@@ -192,15 +161,14 @@ begin
 	begin
 	
 		--if rising_edge(Clock) then
-			-- RST case is already handled (we have passed RST to the registers straight,so just deal with the other cases)
+			-- RST case is already handled inside the registers
 			if RST='0' then
-				-- just refresh the write enable array
+				-- Handling the AND logic of WrEN and Decoder's output for each register
 				write_enable_loop: for j in 0 to 31 loop
 					intermediate_WE_array(j) <= WrEn and dec_out(j); 
 				end loop write_enable_loop;				
 			end if;
 		--end if;   
-	
 	end process;
 
 
