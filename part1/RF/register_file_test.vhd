@@ -1,23 +1,27 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
+ 
+-- Uncomment the following library declaration if using
+-- arithmetic functions with Signed or Unsigned values
+--USE ieee.numeric_std.ALL;
+ 
+ENTITY register_file_testbench IS
+END register_file_testbench;
+ 
 
- 
-ENTITY register_file_test IS
-END register_file_test;
- 
-ARCHITECTURE behavior OF register_file_test IS 
+ARCHITECTURE behavior OF register_file_testbench IS 
  
     -- Component Declaration for the Unit Under Test (UUT)
  
     COMPONENT register_file
     PORT(
-         CLK : IN  std_logic;
-         RST : IN  std_logic;
          Ard1 : IN  std_logic_vector(4 downto 0);
          Ard2 : IN  std_logic_vector(4 downto 0);
          Awr : IN  std_logic_vector(4 downto 0);
+         WrEn : IN  std_logic;
+         Clock : IN  std_logic;
+         RST : IN  std_logic;
          Din : IN  std_logic_vector(31 downto 0);
-         WrEN : IN  std_logic;
          Dout1 : OUT  std_logic_vector(31 downto 0);
          Dout2 : OUT  std_logic_vector(31 downto 0)
         );
@@ -25,39 +29,51 @@ ARCHITECTURE behavior OF register_file_test IS
     
 
    --Inputs
-   signal CLK : std_logic := '0';
-   signal RST : std_logic := '0';
    signal Ard1 : std_logic_vector(4 downto 0) := (others => '0');
    signal Ard2 : std_logic_vector(4 downto 0) := (others => '0');
    signal Awr : std_logic_vector(4 downto 0) := (others => '0');
+   signal WrEn : std_logic := '0';
+   signal Clock : std_logic := '0';
+   signal RST : std_logic := '0';
    signal Din : std_logic_vector(31 downto 0) := (others => '0');
-   signal WrEN : std_logic := '0';
 
  	--Outputs
    signal Dout1 : std_logic_vector(31 downto 0);
    signal Dout2 : std_logic_vector(31 downto 0);
 
    -- Clock period definitions
-   constant CLK_period : time := 10 ns;
+   constant Clock_period : time := 100 ns;
  
 BEGIN
  
 	-- Instantiate the Unit Under Test (UUT)
    uut: register_file PORT MAP (
-          CLK => CLK,
-          RST => RST,
           Ard1 => Ard1,
           Ard2 => Ard2,
           Awr => Awr,
+          WrEn => WrEn,
+          Clock => Clock,
+          RST => RST,
           Din => Din,
-          WrEN => WrEN,
           Dout1 => Dout1,
           Dout2 => Dout2
         );
 
    -- Clock process definitions
-   CLK_process :process
+   Clock_process :process
+   begin
+		Clock <= '0';
+		wait for Clock_period/2;
+		Clock <= '1';
+		wait for Clock_period/2;
+   end process;
+ 
+
+   -- Stimulus process
+   stim_proc: process
    begin		
+		RST<='1';
+		wait for 40 ns;
       -- hold reset state for 100 ns.
       wait for 100 ns;
 
@@ -66,7 +82,7 @@ BEGIN
 		
 		-- firstly, test the reset signal
 		-- expected result is that Dout1 and Dout2 are set to 0 
-		RST <= '1';
+		--RST <= '1';
 		wait for 200 ns; 
 		
 		-- then test that while reset is on and write enable is off, Din has no effect
