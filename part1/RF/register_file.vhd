@@ -93,8 +93,8 @@ architecture Behavioral of register_file is
 begin
 	-- iinstantiation of the decoder
 	dec:	decoder PORT MAP (
-				A => Awr,
-				X => dec_out 
+				decIn => Awr,
+				decOut=> dec_out 
 			);
 
 	-- instantiation of the multiplexers		
