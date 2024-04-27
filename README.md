@@ -12,3 +12,7 @@ by Poler and Asterinos**
 #### Features
 - A semi-functional FSM
 - Slow as hell
+
+### Part 1 
+
+**A single cycle cpu**
