@@ -1,1 +1,1 @@
-This is the mem stage
+This is the meme stage
