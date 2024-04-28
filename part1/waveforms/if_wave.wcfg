@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="/home/polychronis/Projects/TUC_stuff/HPY301/part1/if_test_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="if_test" />
+            <top_module name="matrices" />
+            <top_module name="numeric_std" />
+            <top_module name="std_logic_1164" />
+            <top_module name="std_logic_arith" />
+            <top_module name="std_logic_unsigned" />
+            <top_module name="textio" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="18" />
+   <wvobject fp_name="/if_test/pc_immed" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">pc_immed[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pc_immed[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/if_test/pc_sel" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">pc_sel</obj_property>
+      <obj_property name="ObjectShortName">pc_sel</obj_property>
+   </wvobject>
+   <wvobject fp_name="/if_test/pc_lden" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">pc_lden</obj_property>
+      <obj_property name="ObjectShortName">pc_lden</obj_property>
+   </wvobject>
+   <wvobject fp_name="/if_test/rst" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/if_test/clk" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/if_test/instr" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">instr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">instr[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/if_test/clk_period" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">clk_period</obj_property>
+      <obj_property name="ObjectShortName">clk_period</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider8" type="divider">
+      <obj_property name="label">PC_Reg</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">128 128 255</obj_property>
+      <obj_property name="TextColor">230 230 230</obj_property>
+   </wvobject>
+   <wvobject fp_name="/if_test/uut/pc/datain" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">datain[31:0]</obj_property>
+      <obj_property name="ObjectShortName">datain[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/if_test/uut/pc/dataout" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">dataout[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dataout[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/if_test/uut/pc/temp" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">temp[31:0]</obj_property>
+      <obj_property name="ObjectShortName">temp[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="divider19" type="divider">
+      <obj_property name="label">Intern_sign</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="BkColor">128 128 255</obj_property>
+      <obj_property name="TextColor">230 230 230</obj_property>
+   </wvobject>
+   <wvobject fp_name="/if_test/uut/pc_mem" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">pc_mem[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pc_mem[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/if_test/uut/mux_pc" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">mux_pc[31:0]</obj_property>
+      <obj_property name="ObjectShortName">mux_pc[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/if_test/uut/muxin" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">muxin[31:0]</obj_property>
+      <obj_property name="ObjectShortName">muxin[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/if_test/uut/imm_inc_res" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">imm_inc_res[31:0]</obj_property>
+      <obj_property name="ObjectShortName">imm_inc_res[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/if_test/uut/pc_4" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">pc_4[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pc_4[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/if_test/uut/pc_4_mux" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">pc_4_mux[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pc_4_mux[31:0]</obj_property>
+   </wvobject>
+</wave_config>
