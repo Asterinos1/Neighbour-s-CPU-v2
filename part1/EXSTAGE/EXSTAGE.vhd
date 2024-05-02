@@ -15,7 +15,7 @@ entity EXSTAGE is
            RF_B : in  STD_LOGIC_VECTOR (31 downto 0);
            Immed : in  STD_LOGIC_VECTOR (31 downto 0);
            ALU_Bin_sel : in  STD_LOGIC;
-           ALU_func : in  STD_LOGIC_VECTOR (4 downto 0);
+           ALU_func : in  STD_LOGIC_VECTOR (3 downto 0);
            ALU_out : out  STD_LOGIC_VECTOR (31 downto 0));
 end EXSTAGE;
 
