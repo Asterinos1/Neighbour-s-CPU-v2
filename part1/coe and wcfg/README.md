@@ -22,3 +22,9 @@ sw r5, 4(r10)   Stores the value in register r5 into memory at the address forme
 mycoe.coe contains the following instructions:
 (Instructions to test sw, lw, lb. Although sb is not tested, it works with this implementation) 
 
+li r1 , 4  Loads the immediate value 4 into register r1.
+addir r5, r1, 4096   Adds the immediate value 4096 to the value stored in register r1 and stores the result in register r5.
+sw r5, 4(r1)   Stores the value in register r5 into memory at the address formed by adding 4 to the value in register r1.
+lw r4, 4(r1)   Loads a word from memory at the address formed by adding 4 to the value in register r1 and stores it in register r4.
+lb r6 , 4(r1)  Loads a byte from memory at the address formed by adding 4 to the value in register r1 and stores it in the lower 8 bits of register r6.
+lb r6, 5(r1)   Loads a byte from memory at the address formed by adding 5 to the value in register r1 and stores it in the lower 8 bits of register r6.
