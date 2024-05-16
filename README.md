@@ -3,7 +3,7 @@
 
 **This rep contains the assingments for Computer Organization and Design course at TUC.
 by Poler and Asterinos**
-:shit:
+
 
 ### Part 0
 
@@ -11,9 +11,9 @@ by Poler and Asterinos**
 
 #### Features
 - A semi-functional FSM
-- Slow as hell
+- Very slow
 
 
 ### Part 1
 
-**The official CPU for neighbour's pc with 1 kb ram**
+**The official single-cycle CPU for neighbour's pc with 1 kb ram/rom**
