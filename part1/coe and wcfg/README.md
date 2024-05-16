@@ -1,6 +1,6 @@
 coe files and waveform configurations files
 
-new.coe contains the following instructions:
+**new.coe contains the following instructions:**
 (Generic instructions)
 
 li r1, 6   Loads the immediate value 6 into register r1.
