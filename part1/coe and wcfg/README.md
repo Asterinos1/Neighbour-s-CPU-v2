@@ -17,3 +17,8 @@ ror r6, r5, 1  Bitwise rotate right operation on the value in register r5 by 1 b
 sw r5, 4(r10)   Stores the value in register r5 into memory at the address formed by adding 4 to the value in register r10.
 
 
+
+
+mycoe.coe contains the following instructions:
+(Instructions to test sw, lw, lb. Although sb is not tested, it works with this implementation) 
+
