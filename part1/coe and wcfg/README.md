@@ -3,7 +3,7 @@ coe files and waveform configurations files
 **new.coe contains the following instructions:**
 (Generic instructions)
 
-li r1, 6   Loads the immediate value 6 into register r1.
+li r1, 6   Loads the immediate value 6 into register r1.<br>
 li r2, 6   Loads the immediate value 6 into register r2.
 add r3, r1, r2  Adds the values stored in registers r1 and r2 and stores the result in register r3.
 bne r1, r2, 0   Branches to offset 0 if the values in registers r1 and r2 are not equal.
