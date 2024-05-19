@@ -17,3 +17,11 @@ by Poler and Asterinos**
 ### Part 1
 
 **The official single-cycle CPU for neighbour's pc with 1 kb ram/rom**
+
+### Part 2
+
+**Converrsion of single-cycle to multi-cycle CPU
+
+### Part 3
+
+**Pipeline desing88
