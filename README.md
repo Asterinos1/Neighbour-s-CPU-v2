@@ -20,8 +20,8 @@ by Poler and Asterinos**
 
 ### Part 2
 
-**Converrsion of single-cycle to multi-cycle CPU
+**Converrsion of single-cycle to multi-cycle CPU**
 
 ### Part 3
 
-**Pipeline desing88
+**Pipeline desing88**
