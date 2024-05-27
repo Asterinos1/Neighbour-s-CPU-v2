@@ -20,7 +20,7 @@ by Poler and Asterinos**
 
 ### Part 2
 
-**Conversion of single-cycle to multi-cycle CPU**
+**Conversion from single-cycle to multi-cycle CPU**
 
 ### Part 3
 
