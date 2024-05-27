@@ -24,4 +24,4 @@ by Poler and Asterinos**
 
 ### Part 3
 
-**Pipeline desing**
+**Pipeline desing** (coming soon) 
