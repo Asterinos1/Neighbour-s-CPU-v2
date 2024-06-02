@@ -9,11 +9,6 @@ by Poler and Asterinos**
 
 **A memory block with a simple controller for reading and writing**
 
-#### Features
-- A semi-functional FSM
-- Very slow
-
-
 ### Part 1
 
 **The official single-cycle CPU for neighbour's pc with 1 kb ram/rom**
