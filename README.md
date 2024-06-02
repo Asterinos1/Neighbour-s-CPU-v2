@@ -1,4 +1,4 @@
-# Welcome to neighbour's cpu also known as Computer Organization and Design.
+# Welcome to neighbour's cpu also known as Computer Organization and Design (2024)
 
 
 **This rep contains the assingments for Computer Organization and Design course at TUC.
