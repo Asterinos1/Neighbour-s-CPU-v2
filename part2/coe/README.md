@@ -1,6 +1,3 @@
-Sure! Below is the README content for your GitHub repository:
-MIPS Assembly Instructions
-
 This repository contains a list of MIPS assembly instructions derived from a memory initialization vector.
 Instructions
 
