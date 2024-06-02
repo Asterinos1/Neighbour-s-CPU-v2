@@ -1,8 +1,4 @@
-This repository contains a list of MIPS assembly instructions derived from a memory initialization vector.
-Instructions
-
-Here are the MIPS assembly instructions:
-
+Coe instructions:
     li $1, 4
     addi $5, $1, 0
     sw $5, 4($1)
