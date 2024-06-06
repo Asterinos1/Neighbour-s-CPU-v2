@@ -19,4 +19,4 @@ by Poler and Asterinos**
 
 ### Part 3 (200 points)
 
-**Pipeline desing** (coming soon) 
+**Pipeline desing** (WIP) 
